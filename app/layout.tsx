@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Providers from '@/components/Providers';
 import Navbar    from '@/components/Navbar';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title:       'PixelShift — Instant Image Converter',
@@ -41,6 +42,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
+          <Analytics />
         </Providers>
       </body>
     </html>
