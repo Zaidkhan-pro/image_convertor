@@ -151,6 +151,16 @@ body {
 
 .navbar-auth { display: flex; align-items: center; gap: var(--sp-xs); }
 
+.navbar-brand-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-brand-link:hover .brand-name {
+  text-decoration: underline;
+}
+
 .auth-skeleton {
   width:         80px;
   height:        32px;
@@ -827,12 +837,39 @@ button { font-family: var(--font-mono); }
 }
 
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 800px) {
+  .navbar {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    justify-content: center;
+    height: auto;
+    padding: 10px var(--sp-sm);
+  }
+
+  .navbar-brand,
+  .navbar-auth {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-auth {
+    order: 2;
+  }
+}
+
 @media (max-width: 600px) {
   .page-content { padding: 0 var(--sp-sm) var(--sp-lg); }
-  .queue-card { gap: 8px; padding: 10px; }
+  .queue-card { gap: 8px; padding: 10px; flex-direction: column; align-items: stretch; }
   .card-thumb { display: none; }
-  .settings-panel { flex-direction: column; }
+  .settings-panel { flex-direction: column; padding: var(--sp-sm); }
   .setting-group--row { flex-direction: column; }
   .hero-title { font-size: 32px; }
   .drop-zone { padding: var(--sp-lg) var(--sp-sm); }
+  .queue-header { flex-direction: column; align-items: stretch; }
+  .queue-actions { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+  .card-actions { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+  .card-filename { white-space: normal; }
+  .btn-convert { width: 100%; min-width: auto; font-size: 20px; padding: 14px; }
+  .auth-card, .modal-panel { max-width: 100%; padding: var(--sp-md); }
+  .settings-toggle { width: 100%; justify-content: center; }
 }
