@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { Aperture, LogIn, LogOut, ChevronDown } from 'lucide-react';
@@ -29,13 +30,15 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       {/* Brand */}
-      <div className="navbar-brand">
-        <Aperture size={22} className="brand-icon" />
-        <span className="brand-name">
-          Pixel<span className="brand-accent">Shift</span>
-        </span>
-        <span className="brand-badge">BETA</span>
-      </div>
+      <Link href="/" className="navbar-brand-link" aria-label="Go to home page">
+        <div className="navbar-brand">
+          <Aperture size={22} className="brand-icon" />
+          <span className="brand-name">
+            Pixel<span className="brand-accent">Shift</span>
+          </span>
+          <span className="brand-badge">BETA</span>
+        </div>
+      </Link>
 
       {/* Auth section */}
       <div className="navbar-auth">
@@ -47,7 +50,7 @@ export default function Navbar() {
           <button
             id="navbar-signin-btn"
             className="btn-secondary navbar-signin"
-            onClick={() => signIn('google')}
+            onClick={() => signIn('google', { callbackUrl: '/' })}
           >
             <LogIn size={15} />
             Sign in
